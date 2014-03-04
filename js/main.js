@@ -21,8 +21,19 @@
  **/
 requirejs.config({
 	paths: {
-		"jquery": "vendor/jquery"
+		"jquery": "vendor/jquery",
+		"util": "util",
+		"models": "app/models",
+		"views": "app/views",
+		"controller": "app/controller"
 	}
 });
-define (["jquery"], function () {
+define ([ "jquery"
+		, "controller"
+		, "models/worldModel"
+		, "views/worldView"]
+		, function ($, controller, model, view) {
+	var v = new view(),
+		m = new model(v);
+	controller.model(m);
 });
